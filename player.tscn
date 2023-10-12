@@ -36,6 +36,4 @@ offset_bottom = -38.0
 text = "0"
 horizontal_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [connection signal="mouse_entered" from="hitbox_component" to="." method="_on_hitbox_component_mouse_entered"]

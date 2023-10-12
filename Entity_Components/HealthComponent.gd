@@ -5,9 +5,9 @@ extends Node2D
 # current health
 var health
 
-func _ready():
+func _process(delta):
 	# set current health to max health
-	health = MAX_HEALTH
+	health = MAX_HEALTH + get_parent().stat_mods.Health_Mod
 
 # function to take damage
 func damage(damage : int):
