@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://babkbakbxe0a2"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_o70ls"]
+[ext_resource type="Resource" uid="uid://c40ogqtb6p3jf" path="res://Resources/StatMods.tres" id="2_gd67n"]
+[ext_resource type="Texture2D" uid="uid://debgd8yi2m5x8" path="res://icon.svg" id="2_hu5wm"]
+[ext_resource type="PackedScene" uid="uid://bibdxgmnyebci" path="res://Entity_Components/health_component.tscn" id="3_kakm2"]
+[ext_resource type="PackedScene" uid="uid://dgiqqad4wykey" path="res://Entity_Components/hitbox_component.tscn" id="4_146d4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vcvho"]
+radius = 32.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "hitbox_component")]
+script = ExtResource("1_o70ls")
+stat_mods = ExtResource("2_gd67n")
+health_component = NodePath("Health_Component")
+hitbox_component = NodePath("hitbox_component")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hu5wm")
+
+[node name="Health_Component" parent="." instance=ExtResource("3_kakm2")]
+MAX_HEALTH = 100
+
+[node name="hitbox_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_146d4")]
+health_component = NodePath("../Health_Component")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_component"]
+shape = SubResource("CircleShape2D_vcvho")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -64.0
+offset_right = 24.0
+offset_bottom = -38.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="mouse_entered" from="hitbox_component" to="." method="_on_hitbox_component_mouse_entered"]

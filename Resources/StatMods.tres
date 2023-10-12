@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatMods" load_steps=2 format=3 uid="uid://c40ogqtb6p3jf"]
+
+[ext_resource type="Script" path="res://Resources/StatMods.gd" id="1_71ukp"]
+
+[resource]
+script = ExtResource("1_71ukp")
+Health_Mod = 0.0
+Defense_Mod = 0.0
+Speed_Mod = 0.0
+Evasion_Mod = 0.0
+Attack_Mod = 0.0
+Damage_Mod = 0.0
